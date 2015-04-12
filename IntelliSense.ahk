@@ -42,7 +42,9 @@ if I_Icon <>
 		Menu, Tray, Icon, %I_Icon%
 
 ; Determine AutoHotkey's location:
-IfNotExist, %AHK_DIR%\AutoHotkey.chm
+IfExist, .\AutoHotkey.chm
+	AHK_DIR = .
+else IfNotExist, %AHK_DIR%\AutoHotkey.chm
 {
 	RegRead, AHK_DIR, HKEY_LOCAL_MACHINE, SOFTWARE\AutoHotkey, InstallDir
 	if ErrorLevel  ; Not found, so look for it in some other common locations.
